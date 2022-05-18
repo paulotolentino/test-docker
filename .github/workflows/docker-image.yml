@@ -15,4 +15,5 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag test-docker:$(date +%s) && docker tag test-docker:$(date +%s) test-docker:$(date +%s) && docker push paulotolentino/test-docker:$(date +%s)
+    - TAG: $(date +%s)
+      run: docker build . --file Dockerfile --tag test-docker:$TAG && docker tag test-docker:$TAG test-docker:$TAG && docker push paulotolentino/test-docker:$TAG
