@@ -1,5 +1,8 @@
 name: Docker Image CI
 
+env:
+  TAG: $(date +%s)
+
 on:
   push:
     branches: [ main ]
@@ -15,5 +18,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-    - TAG: $(date +%s)
       run: docker build . --file Dockerfile --tag test-docker:$TAG && docker tag test-docker:$TAG test-docker:$TAG && docker push paulotolentino/test-docker:$TAG
