@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag paulotolentino/test-docker
-        && docker login -u paulotolentino -p 3832578592068575
-        && docker push paulotolentino/test-docker
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/test-docker
+        && docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+        && docker push ${{ secrets.DOCKERHUB_USERNAME }}/test-docker
